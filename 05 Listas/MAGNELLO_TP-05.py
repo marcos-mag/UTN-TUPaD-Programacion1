@@ -2,6 +2,9 @@
 #    #● Mostrar la lista completa. 
 #    #● Calcular y mostrar el promedio. 
 #    #● Indicar la nota más alta y la más baja
+
+from ast import Import
+import random
 #
 #Notas = [7.5, 8, 6, 9.5, 5, 8.5, 7, 6.5, 9, 10]
 #print("Notas del parcial: \n")
@@ -201,44 +204,93 @@
 #    Promedio_materia = sum(Notas[i][j] for i in range (Estudiantes)) / Estudiantes
 #    print (f"  Materia {j+1}: {Promedio_materia:.2f} \n")
 #
-##Actividad 9: Representar un tablero de Ta-Te-Ti como una lista de listas (3x3). 
-#    #● Inicializarlo con guiones "-" representando casillas vacías. 
-#    #● Permitir que dos jugadores ingresen posiciones (fila, columna) para colocar "X" o "O". 
-#    #● Mostrar el tablero después de cada jugada
+###Actividad 9: Representar un tablero de Ta-Te-Ti como una lista de listas (3x3). 
+##    #● Inicializarlo con guiones "-" representando casillas vacías. 
+##    #● Permitir que dos jugadores ingresen posiciones (fila, columna) para colocar "X" o "O". 
+##    #● Mostrar el tablero después de cada jugada
+#
+#
+#Filas = 3
+#Columnas = 3
+#Tablero = [["-"] * Columnas for _ in range(Filas)]
+#Turno = 0
+#
+#for Movimiento in range(9):
+#    jugador = "X" if Turno % 2 == 0 else "O"
+#    print(f"Turno de {jugador}")
+#
+#    while True:
+#        Fila = int(input("Ingrese fila (1-3): ")) - 1
+#        Columna = int(input("Ingrese columna (1-3): ")) - 1
+#        print()
+#
+#        if Fila < 0 or Fila >= Filas or Columna < 0 or Columna >= Columnas:
+#            print("Posición inválida. Debe ser entre 1 y 3.")
+#        elif Tablero[Fila][Columna] != "-":
+#            print("Esa casilla ya está ocupada. Elige otra.")
+#        else:
+#            break
+#
+#    Tablero[Fila][Columna] = jugador
+#
+#    for fila_tablero in Tablero:
+#        for celda in fila_tablero:
+#            print(celda, end=" ")
+#        print()
+#    print()
+#
+#    Turno += 1
+#
+#print("Juego terminado.")
+##Lo que me costo sacar este, no se me venian las ideas. Pero buen resultado. 
 
+##Actividad 10: Una tienda registra las ventas de 4 productos durante 7 días, en una matriz de 4x7. 
+#    #● Mostrar el total vendido por cada producto. 
+#    #● Mostrar el día con mayores ventas totales. 
+#    #● Indicar cuál fue el producto más vendido en la semana.
+#
+#import random
+#Productos = 4
+#Dias = 7
+#Ventas = [[0] * Dias for _ in range(Productos)]
+#
+#for i in range(Dias):
+#    for j in range(Productos):
+#        Ventas[j][i] = random.randint(0, 999) 
+#        #Ventas[j][i] = int(input(f"Ingrese las ventas del producto {j+1} para el día {i+1}: ")) #Con esot lo podria hacer de manera mnaul. 
+#
+##Total de ventas de cada producto.
+#print("\nTotal vendido por cada producto: \n")
+#for j in range(Productos):
+#    Total_producto = sum(Ventas[j][i] for i in range(Dias))
+#    print(f"  Producto {j+1}: {Total_producto} \n")
+#
+##Producto más vendido en la semana.
+#Total_ventas_producto = [sum(Ventas[j][i] for i in range(Dias)) for j in range(Productos)]
+#Producto_mas_vendido = Total_ventas_producto.index(max(Total_ventas_producto)) + 1
+#print(f"  Producto más vendido en la semana: Producto {Producto_mas_vendido} \n")
+#
+##Dia con mayores ventas totales.
+#Total_ventas_dia = [sum(Ventas[j][i] for j in range(Productos)) for i in range(Dias)]
+#Dia_mayores_ventas = Total_ventas_dia.index(max(Total_ventas_dia)) + 1
+#if Dia_mayores_ventas == 1:
+#    Dia_mayores_ventas = "Lunes"
+#elif Dia_mayores_ventas == 2:
+#    Dia_mayores_ventas = "Martes"  
+#elif Dia_mayores_ventas == 3:  
+#    Dia_mayores_ventas = "Miércoles"
+#elif Dia_mayores_ventas == 4:
+#    Dia_mayores_ventas = "Jueves"
+#elif Dia_mayores_ventas == 5:
+#    Dia_mayores_ventas = "Viernes"
+#elif Dia_mayores_ventas == 6:
+#    Dia_mayores_ventas = "Sábado"
+#elif Dia_mayores_ventas == 7:
+#    Dia_mayores_ventas = "Domingo"
+#print(f"  Día con mayores ventas totales: Día {Dia_mayores_ventas} \n")
 
-Filas = 3
-Columnas = 3
-Tablero = [["-"] * Columnas for _ in range(Filas)]
-Turno = 0
-
-for Movimiento in range(9):
-    jugador = "X" if Turno % 2 == 0 else "O"
-    print(f"Turno de {jugador}")
-
-    while True:
-        Fila = int(input("Ingrese fila (1-3): ")) - 1
-        Columna = int(input("Ingrese columna (1-3): ")) - 1
-        print()
-
-        if Fila < 0 or Fila >= Filas or Columna < 0 or Columna >= Columnas:
-            print("Posición inválida. Debe ser entre 1 y 3.")
-        elif Tablero[Fila][Columna] != "-":
-            print("Esa casilla ya está ocupada. Elige otra.")
-        else:
-            break
-
-    Tablero[Fila][Columna] = jugador
-
-    for fila_tablero in Tablero:
-        for celda in fila_tablero:
-            print(celda, end=" ")
-        print()
-    print()
-
-    Turno += 1
-
-print("Juego terminado.")
-#Lo que me costo sacar este, no se me venian las ideas. Pero buen resultado. 
-
-#Actividad 10: 
+#Actividad 11:  Crear una lista con los nombres de 10 estudiantes. 
+    #● Solicitar al usuario que ingrese un nombre a buscar. 
+    #● Indicar si el nombre se encuentra en la lista. 
+    #● Mostrar la posición en la que aparece. 
+    #● Si no se encuentra, informar que no está en la lista. 
